@@ -9,3 +9,15 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Funcionando en http://localhost:${port}`)
 })
+
+var request = require('request');
+var options = {
+  'method': 'GET',
+  'url': 'https://c840cfx2we.execute-api.us-east-1.amazonaws.com/dev/isw/audit-report',
+  'headers': {
+  }
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
