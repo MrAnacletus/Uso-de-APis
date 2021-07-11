@@ -19,7 +19,11 @@ app.get('/aure', (req, res) => {
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
-    res.send(response.body);
+    // add an output filter to extract the full address
+    geocodeByAddressInputs.addOutputFilter("address", "/GeocodeResponse/result/formatted_address", "Response")
+    // add an output filter to extract the collection of address long_name components
+    geocodeByAddressInputs.addOutputFilter("components", "/GeocodeResponse/result/address_component/long_name", "Response")
+    res.send(response.getOutputs());
   });
 })
 app.get('/bire', (req, res) => {
