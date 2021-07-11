@@ -22,9 +22,9 @@ app.get('/aure', (req, res) => {
     var _ = require("underscore");
     var json = response.body;
     var users = JSON.parse(json);
-    var filtered = _.where(users, {user: "a"});
+    var filtered = _.where(users, {status: "Finished"});
     // => [{user: "a", age: 20}]
-    res.send(json);
+    res.send(filtered);
   });
 })
 app.get('/bire', (req, res) => {
