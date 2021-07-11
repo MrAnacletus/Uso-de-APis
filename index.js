@@ -32,13 +32,13 @@ app.get('/aure/:llave/:valor', (req, res) => {
   	    var filtered = _.where(users["Items"], {date: valor});
       	break;
     case "job_id":
-  	    var filtered = _.where(users["Items"], {job_id: valor});
+  	    var filtered = _.where(users["Items"], {job_id: parseInt(valor)});
       	break;
     case "email":
   	    var filtered = _.where(users["Items"], {email: valor});
       	break;
     case "printer_id":
-  	    var filtered = _.where(users["Items"], {printer_id: valor});
+  	    var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
       	break;
   }
   res.send(filtered);
