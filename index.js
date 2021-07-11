@@ -9,8 +9,9 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Funcionando en http://localhost:${port}`)
 })
-app.get('/aure/:status', (req, res) => {
-  var buscar = req.params.status;
+app.get('/aure/:llave/:valor', (req, res) => {
+  var llave = req.params.llave;
+  var valor = req.params.valor;
   var request = require('request');
   var options = {
     'method': 'GET',
@@ -19,13 +20,14 @@ app.get('/aure/:status', (req, res) => {
     }
   };
   request(options, function (error, response) {
-    if (error) throw new Error(error);
-    var _ = require("underscore");
-    var json = response.body;
-    var users = JSON.parse(json);
-    var filtered = _.where(users, {status: buscar});
-    // => [{user: "a", age: 20}]
-    res.send(json);
+  if (error) throw new Error(error);
+  var _ = require("underscore");
+  var json = response.body;
+  var users = JSON.parse(json);
+  if (llave == "status"){
+    var filtered = _.where(users["Items"], {status: valor});
+  }
+  res.send(filtered);
   });
 })
 app.get('/bire', (req, res) => {
