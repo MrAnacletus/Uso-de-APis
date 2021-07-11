@@ -70,7 +70,9 @@ app.get('/jocare', (req, res) => {
     res.send(response.body);
   });
 })
-app.get('/prire', (req, res) => {
+app.get('/prire/:llave/:valor', (req, res) => {
+  var llave = req.params.llave;
+  var valor = req.params.valor;
   var request = require('request');
   var options = {
     'method': 'GET',
@@ -80,7 +82,27 @@ app.get('/prire', (req, res) => {
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
-    res.send(response.body);
+    var _ = require("underscore");
+    var json = response.body;
+    var users = JSON.parse(json);
+    switch(llave){
+      case "status":
+          var filtered = _.where(users["Items"], {status: valor});
+          break;
+      case "printer_name":
+          var filtered = _.where(users["Items"], {printer_name: valor});
+          break;
+      case "printer_type":
+          var filtered = _.where(users["Items"], {printer_type: valor});
+          break;
+      case "account":
+          var filtered = _.where(users["Items"], {account: valor});
+          break;
+      case "printer_id":
+          var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
+          break;
+    }
+  res.send(filtered);
   });
 })
 
