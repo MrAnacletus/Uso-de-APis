@@ -24,7 +24,7 @@ app.get('/aure', (req, res) => {
     var users = JSON.parse(json);
     var filtered = _.where(users, {status: "Finished"});
     // => [{user: "a", age: 20}]
-    res.send(filtered);
+    res.send(json);
   });
 })
 app.get('/bire', (req, res) => {
