@@ -24,8 +24,22 @@ app.get('/aure/:llave/:valor', (req, res) => {
   var _ = require("underscore");
   var json = response.body;
   var users = JSON.parse(json);
-  if (llave == "status"){
-    var filtered = _.where(users["Items"], {status: valor});
+  switch(llave){
+    case "status":
+      	var filtered = _.where(users["Items"], {status: valor});
+      	break;
+    case "date":
+  	    var filtered = _.where(users["Items"], {date: valor});
+      	break;
+    case "job_id":
+  	    var filtered = _.where(users["Items"], {job_id: valor});
+      	break;
+    case "email":
+  	    var filtered = _.where(users["Items"], {email: valor});
+      	break;
+    case "printer_id":
+  	    var filtered = _.where(users["Items"], {printer_id: valor});
+      	break;
   }
   res.send(filtered);
   });
