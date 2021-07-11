@@ -40,7 +40,7 @@ app.get('/reportes_auditoria/:llave/:valor', (req, res) => {
     case "printer_id":
   	    var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
       	break;
-    default:
+    case "all":
     	var filtered = users["Items"];
   }
   res.send(filtered);
@@ -103,7 +103,7 @@ app.get('/reporte_impresora/:llave/:valor', (req, res) => {
       case "printer_id":
           var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
           break;
-      default:
+      case "all":
     	  var filtered = users["Items"];
     }
   res.send(filtered);
