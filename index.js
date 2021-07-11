@@ -3,13 +3,13 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Bienvenido/a/e')
 })
 
 app.listen(port, () => {
   console.log(`Funcionando en http://localhost:${port}`)
 })
-app.get('/aure/:llave/:valor', (req, res) => {
+app.get('/reportes_auditoria/:llave/:valor', (req, res) => {
   var llave = req.params.llave;
   var valor = req.params.valor;
   var request = require('request');
@@ -40,6 +40,8 @@ app.get('/aure/:llave/:valor', (req, res) => {
     case "printer_id":
   	    var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
       	break;
+    default:
+    	var filtered = users["Items"];
   }
   res.send(filtered);
   });
@@ -70,7 +72,7 @@ app.get('/jocare', (req, res) => {
     res.send(response.body);
   });
 })
-app.get('/prire/:llave/:valor', (req, res) => {
+app.get('/reporte_impresora/:llave/:valor', (req, res) => {
   var llave = req.params.llave;
   var valor = req.params.valor;
   var request = require('request');
@@ -101,6 +103,8 @@ app.get('/prire/:llave/:valor', (req, res) => {
       case "printer_id":
           var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
           break;
+      default:
+    	  var filtered = users["Items"];
     }
   res.send(filtered);
   });
