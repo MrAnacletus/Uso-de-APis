@@ -20,11 +20,11 @@ app.get('/aure', (req, res) => {
   request(options, function (error, response) {
     if (error) throw new Error(error);
     var _ = require("underscore");
-    var json = '[{"user": "a", "age": 20}, {"user": "b", "age": 30}, {"user": "c", "age": 40}]';
+    var json = response.body;
     var users = JSON.parse(json);
     var filtered = _.where(users, {user: "a"});
     // => [{user: "a", age: 20}]
-    res.send(filtered);
+    res.send(json);
   });
 })
 app.get('/bire', (req, res) => {
