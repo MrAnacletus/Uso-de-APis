@@ -19,11 +19,12 @@ app.get('/aure', (req, res) => {
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
-    // add an output filter to extract the full address
-    geocodeByAddressInputs.addOutputFilter("address", "/GeocodeResponse/result/formatted_address", "Response")
-    // add an output filter to extract the collection of address long_name components
-    geocodeByAddressInputs.addOutputFilter("components", "/GeocodeResponse/result/address_component/long_name", "Response")
-    res.send(response.getOutputs());
+    var _ = require("underscore");
+    var json = '[{"user": "a", "age": 20}, {"user": "b", "age": 30}, {"user": "c", "age": 40}]';
+    var users = JSON.parse(json);
+    var filtered = _.where(users, {user: "a"});
+    // => [{user: "a", age: 20}]
+    res.send(filtered);
   });
 })
 app.get('/bire', (req, res) => {
