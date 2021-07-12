@@ -26,22 +26,23 @@ app.get('/reportes_auditoria/:llave/:valor', (req, res) => {
 		var users = JSON.parse(json);
 		switch(llave){
 			case "status":
-			var filtered = _.where(users["Items"], {status: valor});
-			break;
+				var filtered = _.where(users["Items"], {status: valor});
+				break;
 			case "date":
-			var filtered = _.where(users["Items"], {date: valor});
-			break;
+				var filtered = _.where(users["Items"], {date: valor});
+				break;
 			case "job_id":
-			var filtered = _.where(users["Items"], {job_id: parseInt(valor)});
-			break;
+				var filtered = _.where(users["Items"], {job_id: parseInt(valor)});
+				break;
 			case "email":
-			var filtered = _.where(users["Items"], {email: valor});
-			break;
+				var filtered = _.where(users["Items"], {email: valor});
+				break;
 			case "printer_id":
-			var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
-			break;
+				var filtered = _.where(users["Items"], {printer_id: parseInt(valor)});
+				break;
 			case "all":
-			var filtered = users["Items"];
+				var filtered = users["Items"];
+				break;
 		}
 		res.send(filtered);
   	});
@@ -63,16 +64,17 @@ app.get('/reporte_boleta/:llave/:valor', (req, res) => {
 		var users = JSON.parse(json);
 		switch(llave){
 			case "year_month":
-			var filtered = _.where(users["Items"], {year_month: valor});
-			break;
+				var filtered = _.where(users["Items"], {year_month: valor});
+				break;
 			case "account":
-			var filtered = _.where(users["Items"], {account: valor});
-			break;
+				var filtered = _.where(users["Items"], {account: valor});
+				break;
 			case "prints":
-			var filtered = _.where(users["Items"], {prints: parseInt(valor)});
-			break;
+				var filtered = _.where(users["Items"], {prints: parseInt(valor)});
+				break;
 			case "all":
-			var filtered = users["Items"];
+				var filtered = users["Items"];
+				break;
 		}
 		res.send(filtered);
   	});
@@ -94,22 +96,23 @@ app.get('/razon_cancelacion_trabajos/:llave/:valor', (req, res) => {
 		var users = JSON.parse(json);
 		switch(llave){
 			case "cancel_by":
-			var filtered = _.where(users["Items"], {cancel_by: valor});
-			break;
+				var filtered = _.where(users["Items"], {cancel_by: valor});
+				break;
 			case "job_id":
-			var filtered = _.where(users["Items"], {job_id: parseInt(valor)});
-			break;
+				var filtered = _.where(users["Items"], {job_id: parseInt(valor)});
+				break;
 			case "file_id":
-			var filtered = _.where(users["Items"], {file_id: parseInt(valor)});
-			break;
+				var filtered = _.where(users["Items"], {file_id: parseInt(valor)});
+				break;
 			case "printer_name":
-			var filtered = _.where(users["Items"], {printer_name: valor});
-			break;
+				var filtered = _.where(users["Items"], {printer_name: valor});
+				break;
 			case "account_email":
-			var filtered = _.where(users["Items"], {account_email: valor});
-			break;
+				var filtered = _.where(users["Items"], {account_email: valor});
+				break;
 			case "all":
-			var filtered = users["Items"];
+				var filtered = users["Items"];
+				break;
 		}
 		res.send(filtered);
   	});
